@@ -55,7 +55,7 @@ func uploadSchema(databaseName string, bucket string, prefix string) {
 	filename := databaseName + ".sql"
 	key := path.Join(prefix, filename)
 	fmt.Println("Writing schema to s3://" + bucket + "/" + key)
-	cmd := exec.Command("pg_dump", "-U", "postgres", "-s", "-h", "ec2-52-204-30-139.compute-1.amazonaws.com", "-d", databaseName)
+	cmd := exec.Command("pg_dump", "-U", "postgres", "-s", "-d", databaseName)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		log.Fatal(err)
@@ -77,7 +77,7 @@ func uploadAll(bucket string, prefix string) {
 	filename := "data-" + d + ".bak"
 	key := path.Join(prefix, filename)
 	fmt.Println("Writing schema to s3://" + bucket + "/" + key)
-	cmd := exec.Command("pg_dumpall", "-U", "postgres", "-h", "ec2-52-204-30-139.compute-1.amazonaws.com")
+	cmd := exec.Command("pg_dumpall", "-U", "postgres")
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		log.Fatal(err)
@@ -98,7 +98,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	out, _ := exec.Command("psql", "-U", "postgres", "-h", "ec2-52-204-30-139.compute-1.amazonaws.com", "-t", "-c", selectDatabases).Output()
+	out, _ := exec.Command("psql", "-U", "postgres", "-t", "-c", selectDatabases).Output()
 	databases := strings.Split(string(out), "\n")
 	for _, name := range databases {
 		db := strings.Trim(name, " ")
