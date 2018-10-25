@@ -1,0 +1,4 @@
+dd4659234f4978a3c4e6e44b01a350a0750c0fa8aecb6b8aa3097883389a7aeb  pg_export_s3_0.1.0_Linux_i386.tar.gz
+eaa3a68d637210fbc4833a156a506a2fc3de38659f8d1b2eddc65acb145d3d09  pg_export_s3_0.1.0_Linux_x86_64.tar.gz
+cefb9285d7e49d6ebdee7cdc04f974fd76dd4c5794cb5dc0f86bce2e2ff21f7e  pg_export_s3_0.1.0_Darwin_x86_64.tar.gz
+9f8598cf90dd53e95f64e4ae2550d8fbf531c337360c6945e6266163e8387699  pg_export_s3_0.1.0_Darwin_i386.tar.gz
