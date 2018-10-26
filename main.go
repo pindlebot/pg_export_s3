@@ -52,7 +52,9 @@ var options struct {
 }
 
 func uploadSchema(databaseName string, bucket string, prefix string) {
-	filename := databaseName + ".sql"
+	current := time.Now().Local()
+	d := current.Format("2006-01-02")
+	filename := databaseName + d + ".sql"
 	key := path.Join(prefix, filename)
 	fmt.Println("Writing schema to s3://" + bucket + "/" + key)
 	cmd := exec.Command("pg_dump", "-U", "postgres", "-s", "-d", databaseName)
